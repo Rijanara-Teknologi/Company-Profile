@@ -144,6 +144,17 @@ ul {
     font-size: 1.5rem;
     font-weight: 700;
     color: white;
+    text-decoration: none;
+    /* Ensure no underline */
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    /* subtle adjustment to align with baseline */
 }
 
 .logo .dot {
