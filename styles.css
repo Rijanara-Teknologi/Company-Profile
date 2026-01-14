@@ -348,6 +348,12 @@ ul {
     gap: 30px;
 }
 
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
 .card {
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -792,6 +798,7 @@ ul {
     }
 
     .grid-3,
+    .grid-4,
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
