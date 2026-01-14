@@ -109,7 +109,7 @@
                 <h2>Layanan Kami</h2>
                 <p>Solusi komprehensif untuk kebutuhan teknologi Anda</p>
             </div>
-            <div class="grid-3">
+            <div class="grid-4">
                 <div class="card service-card fade-in-up">
                     <div class="card-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -157,6 +157,22 @@
                         <li>Cloud Server Management</li>
                         <li>IT Consulting</li>
                         <li>Maintenance & Support</li>
+                    </ul>
+                </div>
+                <div class="card service-card fade-in-up delay-3">
+                    <div class="card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                        </svg>
+                    </div>
+                    <h3>Pelatihan Online</h3>
+                    <p>Tingkatkan keahlian tim Anda dengan materi terbaru.</p>
+                    <ul class="check-list">
+                        <li>Web Development</li>
+                        <li>Digital Marketing</li>
+                        <li>Data Science</li>
                     </ul>
                 </div>
             </div>
@@ -296,7 +312,7 @@
                         cepat diakses."</p>
                     <div class="client-info">
                         <strong>Budi Santoso</strong>
-                        <span>CEO, PT Maju Bersama</span>
+                        <span>Karyawan Swasta</span>
                     </div>
                 </div>
                 <div class="card testimonial-card fade-in-up delay-1">
@@ -304,7 +320,7 @@
                         juara."</p>
                     <div class="client-info">
                         <strong>Siti Aminah</strong>
-                        <span>Owner, Kopi Senja</span>
+                        <span>Wiraswasta</span>
                     </div>
                 </div>
                 <div class="card testimonial-card fade-in-up delay-2">
@@ -312,7 +328,7 @@
                         secara signifikan."</p>
                     <div class="client-info">
                         <strong>Reza Pratama</strong>
-                        <span>Digital Marketer</span>
+                        <span>Pegawai Kantor</span>
                     </div>
                 </div>
             </div>
@@ -404,19 +420,20 @@
             </div>
 
             <div class="contact-form-wrapper fade-in-up delay-1">
-                <form id="contactForm" class="contact-form">
+                <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true">
                     <div class="form-group">
                         <label for="name">Nama Lengkap</label>
-                        <input type="text" id="name" required placeholder="John Doe">
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" required placeholder="john@example.com">
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
                         <small class="form-text">Mohon gunakan email dengan domain @gmail.com</small>
                     </div>
                     <div class="form-group">
                         <label for="message">Pesan</label>
-                        <textarea id="message" rows="4" required placeholder="Ceritakan kebutuhan Anda..."></textarea>
+                        <textarea id="message" name="message" rows="4" required
+                            placeholder="Ceritakan kebutuhan Anda..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Kirim Pesan</button>
                 </form>

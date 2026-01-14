@@ -140,11 +140,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Remove error class if valid
                 document.getElementById('email').classList.remove('error');
 
-                // Show success toast
-                showToast('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
+                // Prepare FormData for Netlify submission
+                const formData = new FormData(contactForm);
 
-                // Reset form
-                contactForm.reset();
+                // Send to Netlify via Fetch
+                fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                })
+                    .then(() => {
+                        // Show success toast
+                        showToast('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
+                        // Reset form
+                        contactForm.reset();
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        showToast('Gagal mengirim pesan. Silakan coba lagi.', 'error');
+                    });
             }
         });
     }
