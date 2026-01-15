@@ -494,70 +494,130 @@
             <div data-reveal class="text-center mb-16">
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-slate-900 dark:text-text-main">Tanya Jawab</h2>
             </div>
-            <div class="space-y-4">
-                <div data-reveal data-reveal-delay="0" class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden dark:bg-brand-card dark:border-brand-border">
-                    <button data-accordion-btn class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset dark:hover:bg-brand-dark" aria-expanded="false">
-                        <span class="font-semibold text-slate-900 dark:text-text-main">Apa saja layanan utama Rijanara?</span>
-                        <svg class="w-6 h-6 text-brand-cyan transform transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            <div class="space-y-4 relative z-10" data-faq>
+                <div data-reveal data-reveal-delay="0" class="faq-item bg-brand-card border border-brand-border rounded-xl overflow-hidden" data-faq-item>
+                    <button type="button" 
+                            class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-brand-dark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset" 
+                            data-faq-trigger
+                            aria-expanded="false"
+                            aria-controls="faq-panel-1"
+                            id="faq-trigger-1">
+                        <span class="font-semibold text-text-main">Apa saja layanan utama Rijanara?</span>
+                        <svg class="faq-icon w-6 h-6 text-brand-cyan transition-transform duration-300" data-faq-icon width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </button>
-                    <div class="hidden px-6 pb-6">
-                        <p class="text-slate-600 leading-relaxed dark:text-text-muted">Kami melayani pengembangan software (Web/MobileApp), penjualan produk digital
-                            (Template/Plugin), dan jasa IT lainnya seperti maintenance server.</p>
+                    <div id="faq-panel-1"
+                         class="faq-panel overflow-hidden"
+                         data-faq-panel
+                         role="region"
+                         aria-labelledby="faq-trigger-1"
+                         hidden>
+                        <div class="px-6 pb-6">
+                            <p class="text-text-muted leading-relaxed">Kami melayani pengembangan software (Web/MobileApp), penjualan produk digital
+                                (Template/Plugin), dan jasa IT lainnya seperti maintenance server.</p>
+                        </div>
                     </div>
                 </div>
-                <div data-reveal data-reveal-delay="100" class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden dark:bg-brand-card dark:border-brand-border">
-                    <button data-accordion-btn class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset dark:hover:bg-brand-dark" aria-expanded="false">
-                        <span class="font-semibold text-slate-900 dark:text-text-main">Berapa biaya pembuatan website?</span>
-                        <svg class="w-6 h-6 text-brand-cyan transform transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <div data-reveal data-reveal-delay="100" class="faq-item bg-brand-card border border-brand-border rounded-xl overflow-hidden" data-faq-item>
+                    <button type="button"
+                            class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-brand-dark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset"
+                            data-faq-trigger
+                            aria-expanded="false"
+                            aria-controls="faq-panel-2"
+                            id="faq-trigger-2">
+                        <span class="font-semibold text-text-main">Berapa biaya pembuatan website?</span>
+                        <svg class="faq-icon w-6 h-6 text-brand-cyan transition-transform duration-300" data-faq-icon width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </button>
-                    <div class="hidden px-6 pb-6">
-                        <p class="text-slate-600 leading-relaxed dark:text-text-muted">Biaya bervariasi tergantung kompleksitas fitur. Hubungi kami untuk konsultasi dan penawaran
-                            harga yang sesuai budget Anda.</p>
+                    <div id="faq-panel-2"
+                         class="faq-panel overflow-hidden"
+                         data-faq-panel
+                         role="region"
+                         aria-labelledby="faq-trigger-2"
+                         hidden>
+                        <div class="px-6 pb-6">
+                            <p class="text-text-muted leading-relaxed">Biaya bervariasi tergantung kompleksitas fitur. Hubungi kami untuk konsultasi dan penawaran
+                                harga yang sesuai budget Anda.</p>
+                        </div>
                     </div>
                 </div>
-                <div data-reveal data-reveal-delay="200" class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden dark:bg-brand-card dark:border-brand-border">
-                    <button data-accordion-btn class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset dark:hover:bg-brand-dark" aria-expanded="false">
-                        <span class="font-semibold text-slate-900 dark:text-text-main">Berapa lama proses pengerjaan?</span>
-                        <svg class="w-6 h-6 text-brand-cyan transform transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <div data-reveal data-reveal-delay="200" class="faq-item bg-brand-card border border-brand-border rounded-xl overflow-hidden" data-faq-item>
+                    <button type="button"
+                            class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-brand-dark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset"
+                            data-faq-trigger
+                            aria-expanded="false"
+                            aria-controls="faq-panel-3"
+                            id="faq-trigger-3">
+                        <span class="font-semibold text-text-main">Berapa lama proses pengerjaan?</span>
+                        <svg class="faq-icon w-6 h-6 text-brand-cyan transition-transform duration-300" data-faq-icon width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </button>
-                    <div class="hidden px-6 pb-6">
-                        <p class="text-slate-600 leading-relaxed dark:text-text-muted">Untuk website landing page standar 1-2 minggu. Aplikasi kompleks bisa memakan waktu 1-3
-                            bulan.</p>
+                    <div id="faq-panel-3"
+                         class="faq-panel overflow-hidden"
+                         data-faq-panel
+                         role="region"
+                         aria-labelledby="faq-trigger-3"
+                         hidden>
+                        <div class="px-6 pb-6">
+                            <p class="text-text-muted leading-relaxed">Untuk website landing page standar 1-2 minggu. Aplikasi kompleks bisa memakan waktu 1-3
+                                bulan.</p>
+                        </div>
                     </div>
                 </div>
-                <div data-reveal data-reveal-delay="300" class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden dark:bg-brand-card dark:border-brand-border">
-                    <button data-accordion-btn class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset dark:hover:bg-brand-dark" aria-expanded="false">
-                        <span class="font-semibold text-slate-900 dark:text-text-main">Apakah ada garansi revisi?</span>
-                        <svg class="w-6 h-6 text-brand-cyan transform transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <div data-reveal data-reveal-delay="300" class="faq-item bg-brand-card border border-brand-border rounded-xl overflow-hidden" data-faq-item>
+                    <button type="button"
+                            class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-brand-dark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset"
+                            data-faq-trigger
+                            aria-expanded="false"
+                            aria-controls="faq-panel-4"
+                            id="faq-trigger-4">
+                        <span class="font-semibold text-text-main">Apakah ada garansi revisi?</span>
+                        <svg class="faq-icon w-6 h-6 text-brand-cyan transition-transform duration-300" data-faq-icon width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </button>
-                    <div class="hidden px-6 pb-6">
-                        <p class="text-slate-600 leading-relaxed dark:text-text-muted">Ya, kami memberikan kesempatan revisi major 2x dan revisi minor selama masa maintenance awal.
-                        </p>
+                    <div id="faq-panel-4"
+                         class="faq-panel overflow-hidden"
+                         data-faq-panel
+                         role="region"
+                         aria-labelledby="faq-trigger-4"
+                         hidden>
+                        <div class="px-6 pb-6">
+                            <p class="text-text-muted leading-relaxed">Ya, kami memberikan kesempatan revisi major 2x dan revisi minor selama masa maintenance awal.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div data-reveal data-reveal-delay="400" class="bg-slate-50 border border-slate-200 rounded-xl overflow-hidden dark:bg-brand-card dark:border-brand-border">
-                    <button data-accordion-btn class="w-full flex items-center justify-between p-6 text-left hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset dark:hover:bg-brand-dark" aria-expanded="false">
-                        <span class="font-semibold text-slate-900 dark:text-text-main">Bagaimana dengan support setelah project selesai?</span>
-                        <svg class="w-6 h-6 text-brand-cyan transform transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <div data-reveal data-reveal-delay="400" class="faq-item bg-brand-card border border-brand-border rounded-xl overflow-hidden" data-faq-item>
+                    <button type="button"
+                            class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-brand-dark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-inset"
+                            data-faq-trigger
+                            aria-expanded="false"
+                            aria-controls="faq-panel-5"
+                            id="faq-trigger-5">
+                        <span class="font-semibold text-text-main">Bagaimana dengan support setelah project selesai?</span>
+                        <svg class="faq-icon w-6 h-6 text-brand-cyan transition-transform duration-300" data-faq-icon width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9" />
                         </svg>
                     </button>
-                    <div class="hidden px-6 pb-6">
-                        <p class="text-slate-600 leading-relaxed dark:text-text-muted">Kami menyediakan layanan maintenance bulanan atau support on-demand sesuai kebutuhan Anda.
-                        </p>
+                    <div id="faq-panel-5"
+                         class="faq-panel overflow-hidden"
+                         data-faq-panel
+                         role="region"
+                         aria-labelledby="faq-trigger-5"
+                         hidden>
+                        <div class="px-6 pb-6">
+                            <p class="text-text-muted leading-relaxed">Kami menyediakan layanan maintenance bulanan atau support on-demand sesuai kebutuhan Anda.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -633,6 +693,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-8 right-8 px-6 py-4 bg-gradient-to-r from-brand-cyan to-brand-blue text-white rounded-lg shadow-xl transform translate-y-32 opacity-0 transition-all duration-300 z-50">Pesan berhasil dikirim! Kami akan segera menghubungi Anda.</div>
 
+    <script src="assets/js/faq-accordion.js" defer></script>
     <script type="module" src="assets/js/main.js"></script>
 </body>
 
