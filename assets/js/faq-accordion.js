@@ -73,7 +73,7 @@
             const height = panel.scrollHeight;
             panel.style.height = '0px';
             
-            // Force reflow
+            // Force reflow to ensure browser registers the 0px height before transitioning
             panel.offsetHeight;
             
             // Add transition
@@ -115,7 +115,7 @@
             const height = panel.scrollHeight;
             panel.style.height = height + 'px';
             
-            // Force reflow
+            // Force reflow to ensure browser registers current height before transitioning to 0
             panel.offsetHeight;
             
             // Add transition
