@@ -1,0 +1,17 @@
+{
+  "name": "rijanara-company-profile",
+  "version": "1.0.0",
+  "description": "PT Rijanara Inovasi Teknologi - Company Profile Website",
+  "scripts": {
+    "dev": "tailwindcss -i ./input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./input.css -o ./dist/output.css --minify"
+  },
+  "keywords": ["tailwind", "company-profile", "rijanara"],
+  "author": "PT Rijanara Inovasi Teknologi",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.33"
+  }
+}
