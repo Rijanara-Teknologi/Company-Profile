@@ -24,185 +24,403 @@
         content="https://res.cloudinary.com/teguh02/image/upload/v1768364843/LOGO_KOTAK_xbylsl.png">
     <meta property="og:url" content="https://rijanara.web.id">
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Tailwind CSS (CDN for Development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0055FF',
+                            cyan: '#00D4FF',
+                            dark: '#0B0F19',
+                            surface: '#111827',
+                            gray: '#9CA3AF',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Utilities that are cleaner in CSS */
+        .text-gradient {
+            background: linear-gradient(to right, #00D4FF, #0055FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
-<body>
+<body
+    class="font-inter bg-brand-dark text-white overflow-x-hidden antialiased selection:bg-brand-cyan/30 selection:text-brand-cyan">
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="#" class="logo">
+    <nav
+        class="navbar fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="#" class="logo flex items-center gap-2 group">
                 <img src="https://res.cloudinary.com/teguh02/image/upload/v1768364843/LOGO_KOTAK_xbylsl.png"
-                    alt="Rijanara Logo" class="logo-img">
-                Rijanara<span class="dot">.</span>
+                    alt="Rijanara Logo" class="h-8 w-auto group-hover:scale-110 transition-transform duration-300">
+                <span class="text-xl font-bold tracking-tight">Rijanara<span class="text-brand-cyan">.</span></span>
             </a>
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="icon">
+            <button class="mobile-menu-btn lg:hidden text-white hover:text-brand-cyan transition-colors"
+                aria-label="Toggle Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="w-6 h-6">
                     <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
-            <div class="nav-links">
-                <a href="#home" class="nav-link">Beranda</a>
-                <a href="#services" class="nav-link">Layanan</a>
-                <a href="#products" class="nav-link">Produk Digital</a>
-                <a href="#about" class="nav-link">Tentang</a>
-                <a href="#faq" class="nav-link">FAQ</a>
-                <a href="#contact" class="nav-link mobile-only">Kontak</a>
+
+            <!-- Desktop Links -->
+            <div class="nav-links hidden lg:flex items-center gap-8">
+                <a href="#home"
+                    class="text-gray-400 hover:text-white font-medium text-sm transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Beranda</a>
+                <a href="#services"
+                    class="text-gray-400 hover:text-white font-medium text-sm transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Layanan</a>
+                <a href="#products"
+                    class="text-gray-400 hover:text-white font-medium text-sm transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Produk
+                    Digital</a>
+                <a href="#about"
+                    class="text-gray-400 hover:text-white font-medium text-sm transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Tentang</a>
+                <a href="#faq"
+                    class="text-gray-400 hover:text-white font-medium text-sm transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">FAQ</a>
+                <a href="#contact" class="hidden lg:none nav-link mobile-only">Kontak</a> <!-- hidden desktop -->
             </div>
-            <a href="#contact" class="btn btn-primary nav-cta">Konsultasi</a>
+            <a href="#contact"
+                class="hidden lg:inline-flex px-6 py-2.5 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-semibold text-sm shadow-lg shadow-brand-cyan/20 hover:shadow-brand-cyan/40 hover:-translate-y-0.5 transition-all duration-300">Konsultasi</a>
+        </div>
+
+        <!-- Mobile Menu Container (controlled by JS) -->
+        <div
+            class="mobile-menu-items hidden lg:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10 absolute top-full left-0 w-full p-6 flex flex-col gap-4 shadow-2xl">
+            <a href="#home" class="block text-gray-300 hover:text-brand-cyan py-2 border-b border-white/5">Beranda</a>
+            <a href="#services"
+                class="block text-gray-300 hover:text-brand-cyan py-2 border-b border-white/5">Layanan</a>
+            <a href="#products" class="block text-gray-300 hover:text-brand-cyan py-2 border-b border-white/5">Produk
+                Digital</a>
+            <a href="#about" class="block text-gray-300 hover:text-brand-cyan py-2 border-b border-white/5">Tentang</a>
+            <a href="#faq" class="block text-gray-300 hover:text-brand-cyan py-2 border-b border-white/5">FAQ</a>
+            <a href="#contact" class="block text-brand-cyan font-semibold py-2">Konsultasi Sekarang</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="hero">
-        <div class="container hero-container">
-            <div class="hero-content fade-in-up">
-                <h1>Solusi Perangkat Lunak & Produk Digital untuk <span class="text-gradient">Bisnis Modern</span></h1>
-                <p>Transformasikan ide bisnis Anda menjadi realitas digital dengan teknologi terkini dan desain yang
-                    memukau. Kami membantu Anda tumbuh lebih cepat.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Mulai Konsultasi</a>
-                    <a href="#services" class="btn btn-secondary">Lihat Layanan</a>
+    <header id="home" class="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
+        <!-- Decorative Glow -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-cyan/10 blur-[100px] rounded-full pointer-events-none -z-10">
+        </div>
+
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="text-center lg:text-left animate-fade-in-up">
+                <div
+                    class="inline-block px-4 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-sm font-semibold mb-6">
+                    Solusi Digital #1 Indonesia
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                    Solusi Digital untuk <br> <span class="text-gradient">Bisnis Modern</span>
+                </h1>
+                <p class="text-gray-400 text-lg lg:text-xl leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+                    Transformasikan ide bisnis Anda menjadi realitas digital dengan teknologi terkini dan desain yang
+                    memukau.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#contact"
+                        class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-semibold shadow-lg shadow-brand-cyan/30 hover:shadow-brand-cyan/50 hover:scale-[1.02] transition-all duration-300">
+                        Mulai Konsultasi
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                    <a href="#services"
+                        class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all duration-300">
+                        Lihat Layanan
+                    </a>
+                </div>
+
+                <div class="mt-12 flex items-center justify-center lg:justify-start gap-6 text-gray-500 text-sm">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Terpercaya</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Bergaransi</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Support 24/7</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-visual fade-in-up delay-1">
-                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-svg">
-                    <circle cx="200" cy="200" r="150" stroke="url(#paint0_linear)" stroke-width="2"
-                        stroke-dasharray="10 10" class="spin-slow" />
-                    <circle cx="200" cy="200" r="100" stroke="url(#paint1_linear)" stroke-width="20" class="pulse" />
-                    <rect x="150" y="150" width="100" height="100" rx="20" fill="url(#paint2_linear)" class="float" />
-                    <defs>
-                        <linearGradient id="paint0_linear" x1="50" y1="50" x2="350" y2="350"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00D4FF" />
-                            <stop offset="1" stop-color="#0055FF" />
-                        </linearGradient>
-                        <linearGradient id="paint1_linear" x1="100" y1="100" x2="300" y2="300"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00D4FF" stop-opacity="0.2" />
-                            <stop offset="1" stop-color="#0055FF" stop-opacity="0.2" />
-                        </linearGradient>
-                        <linearGradient id="paint2_linear" x1="150" y1="150" x2="250" y2="250"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#00D4FF" />
-                            <stop offset="1" stop-color="#0055FF" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <div class="glow"></div>
+
+            <div class="relative flex justify-center lg:justify-end animate-fade-in-up delay-100">
+                <div class="relative w-full max-w-[500px] aspect-square">
+                    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="w-full h-full drop-shadow-2xl">
+                        <circle cx="200" cy="200" r="150" stroke="url(#paint0_linear)" stroke-width="2"
+                            stroke-dasharray="10 10" class="animate-spin-slow" />
+                        <circle cx="200" cy="200" r="100" stroke="url(#paint1_linear)" stroke-width="20"
+                            class="animate-pulse" />
+                        <!-- Floating Card Decor -->
+                        <g class="animate-float">
+                            <rect x="150" y="150" width="100" height="100" rx="20" fill="url(#paint2_linear)" />
+                            <circle cx="180" cy="180" r="5" fill="white" fill-opacity="0.5" />
+                            <circle cx="220" cy="180" r="5" fill="white" fill-opacity="0.5" />
+                            <rect x="175" y="210" width="50" height="4" rx="2" fill="white" fill-opacity="0.5" />
+                        </g>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="50" y1="50" x2="350" y2="350"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00D4FF" />
+                                <stop offset="1" stop-color="#0055FF" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear" x1="100" y1="100" x2="300" y2="300"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00D4FF" stop-opacity="0.2" />
+                                <stop offset="1" stop-color="#0055FF" stop-opacity="0.2" />
+                            </linearGradient>
+                            <linearGradient id="paint2_linear" x1="150" y1="150" x2="250" y2="250"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00D4FF" />
+                                <stop offset="1" stop-color="#0055FF" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <!-- Background Glow specific for visual -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-blue/30 blur-[80px] -z-10">
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Stats Section -->
-    <section class="stats">
-        <div class="container stats-grid">
-            <div class="stat-item fade-in-up">
-                <h3>50+</h3>
-                <p>Project Selesai</p>
+    <section class="py-12 border-y border-white/5 bg-slate-800/30 backdrop-blur-sm relative z-10">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="animate-fade-in-up">
+                <h3 class="text-4xl font-bold text-brand-cyan mb-2">50+</h3>
+                <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Project Selesai</p>
             </div>
-            <div class="stat-item fade-in-up delay-1">
-                <h3>10+</h3>
-                <p>Mitra Bisnis</p>
+            <div class="animate-fade-in-up delay-100">
+                <h3 class="text-4xl font-bold text-brand-cyan mb-2">10+</h3>
+                <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Mitra Bisnis</p>
             </div>
-            <div class="stat-item fade-in-up delay-2">
-                <h3>99%</h3>
-                <p>Kepuasan Klien</p>
+            <div class="animate-fade-in-up delay-200">
+                <h3 class="text-4xl font-bold text-brand-cyan mb-2">99%</h3>
+                <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Kepuasan Klien</p>
             </div>
-            <div class="stat-item fade-in-up delay-3">
-                <h3>24/7</h3>
-                <p>Support Teknis</p>
+            <div class="animate-fade-in-up delay-300">
+                <h3 class="text-4xl font-bold text-brand-cyan mb-2">24/7</h3>
+                <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Support Teknis</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-header center fade-in-up">
-                <h2>Layanan Kami</h2>
-                <p>Solusi komprehensif untuk kebutuhan teknologi Anda</p>
+    <section id="services" class="py-20 lg:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in-up max-w-2xl mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Layanan Kami</h2>
+                <p class="text-gray-400 text-lg">Solusi komprehensif untuk kebutuhan teknologi Anda, dirancang untuk
+                    skalabilitas dan performa tinggi.</p>
             </div>
-            <div class="grid-4">
-                <div class="card service-card fade-in-up">
-                    <div class="card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M16 18l6-6-6-6M8 6l-6 6 6 6M12 3v18" />
                         </svg>
                     </div>
-                    <h3>Pengembangan Software</h3>
-                    <p>Membangun aplikasi web dan mobile yang scalable dan robust.</p>
-                    <ul class="check-list">
-                        <li>Web Application (React/Node)</li>
-                        <li>Mobile App (iOS/Android)</li>
-                        <li>Custom ERP & CRM</li>
+                    <h3 class="text-xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">
+                        Pengembangan Software</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">Membangun aplikasi web dan
+                        mobile yang scalable dan robust.</p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Web Application
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Mobile App
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Custom ERP & CRM
+                        </li>
                     </ul>
-                    <div class="card-footer">
+                    <div class="pt-6 border-t border-white/5 relative z-10">
                         <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20tertarik%20dengan%20jasa%20Pengembangan%20Software"
-                            target="_blank" class="btn btn-sm btn-outline">Pesan Sekarang</a>
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-2.5 rounded-xl border border-brand-cyan text-brand-cyan font-medium text-sm hover:bg-brand-cyan hover:text-white transition-all shadow-lg hover:shadow-brand-cyan/20">
+                            Pesan Sekarang
+                        </a>
                     </div>
                 </div>
-                <div class="card service-card fade-in-up delay-1">
-                    <div class="card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+                <!-- Service 2 -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-100">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
                             <line x1="8" y1="21" x2="16" y2="21" />
                             <line x1="12" y1="17" x2="12" y2="21" />
                         </svg>
                     </div>
-                    <h3>Produk Digital</h3>
-                    <p>Aset digital siap pakai untuk mempercepat bisnis Anda.</p>
-                    <ul class="check-list">
-                        <li>Template Website Premium</li>
-                        <li>Plugin & Extensions</li>
-                        <li>UI/UX Design Kits</li>
+                    <h3 class="text-xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">
+                        Produk Digital</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">Aset digital siap pakai untuk
+                        mempercepat bisnis Anda.</p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Template Premium
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Plugin & Extensions
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> UI/UX Kits
+                        </li>
                     </ul>
-                    <div class="card-footer">
+                    <div class="pt-6 border-t border-white/5 relative z-10">
                         <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20tertarik%20dengan%20Produk%20Digital"
-                            target="_blank" class="btn btn-sm btn-outline">Lihat Katalog</a>
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-2.5 rounded-xl border border-brand-cyan text-brand-cyan font-medium text-sm hover:bg-brand-cyan hover:text-white transition-all shadow-lg hover:shadow-brand-cyan/20">
+                            Lihat Katalog
+                        </a>
                     </div>
                 </div>
-                <div class="card service-card fade-in-up delay-2">
-                    <div class="card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+                <!-- Service 3 -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-200">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="12" cy="12" r="3" />
                             <path
                                 d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
                         </svg>
                     </div>
-                    <h3>Jasa IT Lainnya</h3>
-                    <p>Dukungan teknis profesional untuk operasional bisnis.</p>
-                    <ul class="check-list">
-                        <li>Cloud Server Management</li>
-                        <li>IT Consulting</li>
-                        <li>Maintenance & Support</li>
+                    <h3 class="text-xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">Jasa
+                        IT Lainnya</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">Dukungan teknis profesional
+                        untuk operasional bisnis.</p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Server Management
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> IT Consulting
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Maintenance
+                        </li>
                     </ul>
-                    <div class="card-footer">
+                    <div class="pt-6 border-t border-white/5 relative z-10">
                         <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20butuh%20Jasa%20IT%20Lainnya"
-                            target="_blank" class="btn btn-sm btn-outline">Konsultasi</a>
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-2.5 rounded-xl border border-brand-cyan text-brand-cyan font-medium text-sm hover:bg-brand-cyan hover:text-white transition-all shadow-lg hover:shadow-brand-cyan/20">
+                            Konsultasi
+                        </a>
                     </div>
                 </div>
-                <div class="card service-card fade-in-up delay-3">
-                    <div class="card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+
+                <!-- Service 4 -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-300">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                             <path d="M6 12v5c3 3 9 3 12 0v-5" />
                         </svg>
                     </div>
-                    <h3>Pelatihan Online</h3>
-                    <p>Tingkatkan keahlian tim Anda dengan materi terbaru.</p>
-                    <ul class="check-list">
-                        <li>Web Development</li>
-                        <li>Digital Marketing</li>
-                        <li>Data Science</li>
+                    <h3 class="text-xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">
+                        Pelatihan Online</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">Tingkatkan keahlian tim Anda
+                        dengan materi terbaru.</p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Web Development
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Digital Marketing
+                        </li>
+                        <li class="flex items-start gap-3 text-sm text-gray-400">
+                            <span class="text-brand-cyan mt-0.5">✓</span> Data Science
+                        </li>
                     </ul>
-                    <div class="card-footer">
+                    <div class="pt-6 border-t border-white/5 relative z-10">
                         <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20tertarik%20dengan%20Pelatihan%20Online"
-                            target="_blank" class="btn btn-sm btn-outline">Daftar</a>
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-2.5 rounded-xl border border-brand-cyan text-brand-cyan font-medium text-sm hover:bg-brand-cyan hover:text-white transition-all shadow-lg hover:shadow-brand-cyan/20">
+                            Daftar
+                        </a>
                     </div>
                 </div>
             </div>
@@ -210,54 +428,90 @@
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="section section-dark">
-        <div class="container">
-            <div class="section-header center fade-in-up">
-                <h2>Produk Digital Unggulan</h2>
-                <p>Tools terbaik untuk meningkatkan produktivitas</p>
+    <section id="products" class="py-20 bg-slate-900 border-y border-white/5 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in-up max-w-2xl mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Produk Digital Unggulan</h2>
+                <p class="text-gray-400 text-lg">Tools terbaik untuk meningkatkan produktivitas dan mempercepat
+                    pengembangan bisnis Anda.</p>
             </div>
-            <div class="product-grid">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Product 1 -->
-                <div class="card product-card fade-in-up">
-                    <span class="badge">Digital</span>
-                    <h4>Rijanara Start</h4>
-                    <p>Template landing page modern untuk startup.</p>
-                    <a href="#" class="text-link">Lihat Detail →</a>
+                <div
+                    class="group p-6 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-cyan/30 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up">
+                    <span
+                        class="absolute top-3 right-3 px-2.5 py-1 rounded text-xs font-semibold bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">Digital</span>
+                    <h4 class="text-lg font-bold text-white mt-4 mb-2 group-hover:text-brand-cyan transition-colors">
+                        Rijanara Start</h4>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">Template landing page modern
+                        untuk startup teknologi.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-brand-cyan text-sm font-medium hover:text-white transition-colors group/link">
+                        Lihat Detail
+                        <span class="ml-1 transition-transform group-hover/link:translate-x-1">→</span>
+                    </a>
                 </div>
                 <!-- Product 2 -->
-                <div class="card product-card fade-in-up delay-1">
-                    <span class="badge">Digital</span>
-                    <h4>AdminPro UI</h4>
-                    <p>Dashboard admin kit dengan 50+ komponen.</p>
-                    <a href="#" class="text-link">Lihat Detail →</a>
+                <div
+                    class="group p-6 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-cyan/30 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-100">
+                    <span
+                        class="absolute top-3 right-3 px-2.5 py-1 rounded text-xs font-semibold bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">Digital</span>
+                    <h4 class="text-lg font-bold text-white mt-4 mb-2 group-hover:text-brand-cyan transition-colors">
+                        AdminPro UI</h4>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">Dashboard admin kit lengkap
+                        dengan 50+ komponen siap pakai.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-brand-cyan text-sm font-medium hover:text-white transition-colors group/link">
+                        Lihat Detail
+                        <span class="ml-1 transition-transform group-hover/link:translate-x-1">→</span>
+                    </a>
                 </div>
                 <!-- Product 3 -->
-                <div class="card product-card fade-in-up delay-2">
-                    <span class="badge">Digital</span>
-                    <h4>WooPlugin</h4>
-                    <p>Plugin optimasi checkout untuk WooCommerce.</p>
-                    <a href="#" class="text-link">Lihat Detail →</a>
+                <div
+                    class="group p-6 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-cyan/30 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-200">
+                    <span
+                        class="absolute top-3 right-3 px-2.5 py-1 rounded text-xs font-semibold bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">Digital</span>
+                    <h4 class="text-lg font-bold text-white mt-4 mb-2 group-hover:text-brand-cyan transition-colors">
+                        WooPlugin</h4>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">Plugin optimasi checkout untuk
+                        meningkatkan konversi WooCommerce.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-brand-cyan text-sm font-medium hover:text-white transition-colors group/link">
+                        Lihat Detail
+                        <span class="ml-1 transition-transform group-hover/link:translate-x-1">→</span>
+                    </a>
                 </div>
                 <!-- Product 4 -->
-                <div class="card product-card fade-in-up delay-3">
-                    <span class="badge">Digital</span>
-                    <h4>PosSystem v1</h4>
-                    <p>Sistem kasir ringan untuk UMKM F&B.</p>
-                    <a href="#" class="text-link">Lihat Detail →</a>
+                <div
+                    class="group p-6 rounded-2xl bg-brand-surface border border-white/5 hover:border-brand-cyan/30 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-300">
+                    <span
+                        class="absolute top-3 right-3 px-2.5 py-1 rounded text-xs font-semibold bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">Digital</span>
+                    <h4 class="text-lg font-bold text-white mt-4 mb-2 group-hover:text-brand-cyan transition-colors">
+                        PosSystem v1</h4>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-2">Sistem kasir ringan berbasis
+                        cloud untuk UMKM F&B.</p>
+                    <a href="#"
+                        class="inline-flex items-center text-brand-cyan text-sm font-medium hover:text-white transition-colors group/link">
+                        Lihat Detail
+                        <span class="ml-1 transition-transform group-hover/link:translate-x-1">→</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section id="why-us" class="section">
-        <div class="container">
-            <div class="section-header center fade-in-up">
-                <h2>Mengapa Kami?</h2>
+    <section id="why-us" class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Mengapa Kami?</h2>
+                <p class="text-gray-400 text-lg">Keunggulan yang menjadikan kami mitra terbaik untuk pertumbuhan bisnis
+                    Anda.</p>
             </div>
-            <div class="grid-2 why-us-grid">
-                <div class="feature-item fade-in-up">
-                    <div class="icon-box">
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+                <div class="flex gap-5 animate-fade-in-up">
+                    <div
+                        class="w-12 h-12 flex-shrink-0 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-brand-cyan shadow-lg shadow-brand-cyan/5">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
@@ -265,12 +519,14 @@
                         </svg>
                     </div>
                     <div>
-                        <h4>Terpercaya & Profesional</h4>
-                        <p>Tim berpengalaman yang berdedikasi tinggi.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Terpercaya & Profesional</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Tim berpengalaman yang berdedikasi tinggi
+                            dengan track record proyek sukses.</p>
                     </div>
                 </div>
-                <div class="feature-item fade-in-up delay-1">
-                    <div class="icon-box">
+                <div class="flex gap-5 animate-fade-in-up delay-100">
+                    <div
+                        class="w-12 h-12 flex-shrink-0 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-brand-cyan shadow-lg shadow-brand-cyan/5">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <circle cx="12" cy="12" r="10" />
@@ -278,24 +534,28 @@
                         </svg>
                     </div>
                     <div>
-                        <h4>Pengerjaan Cepat</h4>
-                        <p>Timeline terukur dengan delivery tepat waktu.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Pengerjaan Cepat</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Timeline terukur dengan delivery tepat waktu
+                            melalui manajemen proyek agile.</p>
                     </div>
                 </div>
-                <div class="feature-item fade-in-up delay-2">
-                    <div class="icon-box">
+                <div class="flex gap-5 animate-fade-in-up delay-200">
+                    <div
+                        class="w-12 h-12 flex-shrink-0 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-brand-cyan shadow-lg shadow-brand-cyan/5">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                         </svg>
                     </div>
                     <div>
-                        <h4>Keamanan Terjamin</h4>
-                        <p>Standar keamanan tinggi untuk data Anda.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Keamanan Terjamin</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Standar keamanan tinggi untuk melindungi aset
+                            dan data bisnis Anda.</p>
                     </div>
                 </div>
-                <div class="feature-item fade-in-up delay-3">
-                    <div class="icon-box">
+                <div class="flex gap-5 animate-fade-in-up delay-300">
+                    <div
+                        class="w-12 h-12 flex-shrink-0 rounded-xl bg-slate-800 border border-white/10 flex items-center justify-center text-brand-cyan shadow-lg shadow-brand-cyan/5">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -304,8 +564,9 @@
                         </svg>
                     </div>
                     <div>
-                        <h4>Biaya Terjangkau</h4>
-                        <p>Harga kompetitif dengan kualitas premium.</p>
+                        <h4 class="text-lg font-bold text-white mb-2">Biaya Terjangkau</h4>
+                        <p class="text-gray-400 text-sm leading-relaxed">Harga kompetitif dengan kualitas premium yang
+                            memberikan ROI maksimal.</p>
                     </div>
                 </div>
             </div>
@@ -313,200 +574,293 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section section-dark">
-        <div class="container about-container">
-            <div class="about-content fade-in-up">
-                <h2>Tentang Rijanara</h2>
-                <p>PT Rijanara Inovasi Teknologi adalah mitra transformasi digital Anda. Kami menggabungkan kreativitas,
-                    teknologi, dan strategi bisnis untuk menciptakan solusi yang tidak hanya fungsional, tetapi juga
-                    memberikan dampak nyata bagi pertumbuhan bisnis Anda.</p>
-                <div class="tags">
-                    <span class="tag">Profesional</span>
-                    <span class="tag">Aman</span>
-                    <span class="tag">Terukur</span>
-                    <span class="tag">Cepat</span>
+    <section id="about" class="py-20 lg:py-32 bg-slate-900 border-t border-white/5 relative">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="relative animate-fade-in-up group">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-brand-cyan to-brand-blue rounded-2xl opacity-20 blur-lg group-hover:opacity-30 transition-opacity duration-500">
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                        alt="Team Collaboration"
+                        class="relative rounded-2xl shadow-2xl border border-white/10 w-full object-cover aspect-video lg:aspect-square">
+
+                    <!-- Floating Badge -->
+                    <div
+                        class="absolute -bottom-6 -right-6 lg:bottom-8 lg:-right-8 bg-brand-surface p-6 rounded-2xl border border-white/10 shadow-xl animate-float lg:max-w-xs hidden sm:block">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-white">Terverifikasi</h5>
+                                <p class="text-xs text-gray-400">Legalitas Resmi</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400">Kami adalah perusahaan berbadan hukum resmi di bawah naungan PT
+                            Rijanara Inovasi Teknologi.</p>
+                    </div>
+                </div>
+
+                <div class="animate-fade-in-up delay-100">
+                    <div
+                        class="inline-block px-4 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-sm font-semibold mb-6">
+                        Tentang Kami
+                    </div>
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-6 leading-tight">Membangun Masa Depan <span
+                            class="text-gradient">Digital Indonesia</span></h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        PT Rijanara Inovasi Teknologi adalah partner digital strategis yang berkomitmen membantu bisnis
+                        bertransformasi di era teknologi. Kami menggabungkan kreativitas, teknologi, dan strategi
+                        bisnis.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        Dengan tim ahli yang berpengalaman, kami tidak hanya membuat software, tapi menciptakan solusi
+                        yang memberikan dampak nyata bagi pertumbuhan bisnis Anda.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                            <span class="text-gray-300 font-medium">Tim Berpengalaman</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                            <span class="text-gray-300 font-medium">Teknologi Terbaru</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                            <span class="text-gray-300 font-medium">Berorientasi Hasil</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-brand-cyan"></div>
+                            <span class="text-gray-300 font-medium">Layanan Full Service</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact"
+                        class="inline-flex justify-center items-center px-8 py-3 rounded-xl bg-white text-brand-dark font-bold hover:bg-gray-100 transition-all shadow-lg hover:shadow-white/10">
+                        Hubungi Kami
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials" class="section">
-        <div class="container">
-            <div class="section-header center fade-in-up">
-                <h2>Apa Kata Klien</h2>
+    <section id="testimonials" class="py-20 lg:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-fade-in-up max-w-2xl mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Kata Mereka</h2>
+                <p class="text-gray-400 text-lg">Apa kata klien kami tentang layanan dan hasil kerja Rijanara.</p>
             </div>
-            <div class="grid-3">
-                <div class="card testimonial-card fade-in-up">
-                    <p class="quote">"Sangat puas dengan hasil website company profile kami. Desainnya modern dan sangat
-                        cepat diakses."</p>
-                    <div class="client-info">
-                        <strong>Budi Santoso</strong>
-                        <span>Karyawan Swasta</span>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="p-8 rounded-3xl bg-brand-surface border border-white/5 relative animate-fade-in-up">
+                    <div class="text-brand-cyan text-6xl font-serif absolute top-4 left-6 opacity-20">"</div>
+                    <p class="text-gray-300 italic mb-6 relative z-10 leading-relaxed">"Sangat puas dengan hasil website
+                        yang dibuat. Desainnya modern dan loadingnya sangat cepat. Tim support juga sangat responsif."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client"
+                            class="w-12 h-12 rounded-full border-2 border-brand-cyan/20">
+                        <div>
+                            <h5 class="font-bold text-white text-sm">Budi Santoso</h5>
+                            <p class="text-xs text-gray-500">CEO, TechStartup</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card testimonial-card fade-in-up delay-1">
-                    <p class="quote">"Sistem kasir dari Rijanara sangat membantu operasional cafe saya. Supportnya juga
-                        juara."</p>
-                    <div class="client-info">
-                        <strong>Siti Aminah</strong>
-                        <span>Wiraswasta</span>
+                <!-- Testimonial 2 -->
+                <div
+                    class="p-8 rounded-3xl bg-brand-surface border border-white/5 relative animate-fade-in-up delay-100">
+                    <div class="text-brand-cyan text-6xl font-serif absolute top-4 left-6 opacity-20">"</div>
+                    <p class="text-gray-300 italic mb-6 relative z-10 leading-relaxed">"Produk digital dari Rijanara
+                        sangat membantu mempercepat workflow tim kami. Admin template-nya sangat lengkap dan mudah
+                        dikustomisasi."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client"
+                            class="w-12 h-12 rounded-full border-2 border-brand-cyan/20">
+                        <div>
+                            <h5 class="font-bold text-white text-sm">Siti Rahma</h5>
+                            <p class="text-xs text-gray-500">Manager, Creative Agency</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card testimonial-card fade-in-up delay-2">
-                    <p class="quote">"Plugin yang mereka buat sangat efisien, meningkatkan konversi toko online kami
-                        secara signifikan."</p>
-                    <div class="client-info">
-                        <strong>Reza Pratama</strong>
-                        <span>Pegawai Kantor</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section section-dark">
-        <div class="container faq-container">
-            <div class="section-header center fade-in-up">
-                <h2>Tanya Jawab</h2>
-            </div>
-            <div class="accordion">
-                <div class="accordion-item fade-in-up">
-                    <button class="accordion-header" aria-expanded="false">
-                        Apa saja layanan utama Rijanara?
-                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Kami melayani pengembangan software (Web/MobileApp), penjualan produk digital
-                            (Template/Plugin), dan jasa IT lainnya seperti maintenance server.</p>
-                    </div>
-                </div>
-                <div class="accordion-item fade-in-up">
-                    <button class="accordion-header" aria-expanded="false">
-                        Berapa biaya pembuatan website?
-                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Biaya bervariasi tergantung kompleksitas fitur. Hubungi kami untuk konsultasi dan penawaran
-                            harga yang sesuai budget Anda.</p>
-                    </div>
-                </div>
-                <div class="accordion-item fade-in-up">
-                    <button class="accordion-header" aria-expanded="false">
-                        Berapa lama proses pengerjaan?
-                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Untuk website landing page standar 1-2 minggu. Aplikasi kompleks bisa memakan waktu 1-3
-                            bulan.</p>
-                    </div>
-                </div>
-                <div class="accordion-item fade-in-up">
-                    <button class="accordion-header" aria-expanded="false">
-                        Apakah ada garansi revisi?
-                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Ya, kami memberikan kesempatan revisi major 2x dan revisi minor selama masa maintenance awal.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion-item fade-in-up">
-                    <button class="accordion-header" aria-expanded="false">
-                        Bagaimana dengan support setelah project selesai?
-                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <p>Kami menyediakan layanan maintenance bulanan atau support on-demand sesuai kebutuhan Anda.
-                        </p>
+                <!-- Testimonial 3 -->
+                <div
+                    class="p-8 rounded-3xl bg-brand-surface border border-white/5 relative animate-fade-in-up delay-200">
+                    <div class="text-brand-cyan text-6xl font-serif absolute top-4 left-6 opacity-20">"</div>
+                    <p class="text-gray-300 italic mb-6 relative z-10 leading-relaxed">"Pelayanan luar biasa! Konsultasi
+                        gratisnya sangat insightful dan membantu kami menentukan solusi IT yang tepat untuk perusahaan."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Client"
+                            class="w-12 h-12 rounded-full border-2 border-brand-cyan/20">
+                        <div>
+                            <h5 class="font-bold text-white text-sm">Andi Wijaya</h5>
+                            <p class="text-xs text-gray-500">Owner, Retail Business</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Contact & Footer -->
-    <footer id="contact" class="footer">
-        <div class="container footer-content">
-            <div class="footer-cta fade-in-up">
-                <h2>Siap membangun solusi digital Anda?</h2>
-                <p>Diskusikan ide Anda bersama kami hari ini.</p>
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 lg:py-32 bg-slate-900 border-t border-white/5 relative">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-16 animate-fade-in-up">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">FAQ</h2>
+                <p class="text-gray-400 text-lg">Pertanyaan yang sering diajukan seputar layanan kami.</p>
             </div>
+            <div class="space-y-4">
+                <details
+                    class="group bg-brand-surface border border-white/5 rounded-2xl overflow-hidden animate-fade-in-up [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-white group-hover:text-brand-cyan transition-colors pr-8">Berapa lama
+                            waktu pengerjaan website?</h4>
+                        <div
+                            class="text-gray-400 transition-transform duration-300 group-open:rotate-180 flex-shrink-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Waktu pengerjaan bervariasi tergantung kompleksitas. Untuk Company Profile standar biasanya 3-7
+                        hari kerja, sedangkan Web App Custom bisa memakan waktu 1-3 bulan.
+                    </div>
+                </details>
 
-            <div class="contact-form-wrapper fade-in-up delay-1">
-                <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true">
-                    <div class="form-group">
-                        <label for="name">Nama Lengkap</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                <details
+                    class="group bg-brand-surface border border-white/5 rounded-2xl overflow-hidden animate-fade-in-up delay-100 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-white group-hover:text-brand-cyan transition-colors pr-8">Apakah ada
+                            garansi atau maintenance?</h4>
+                        <div
+                            class="text-gray-400 transition-transform duration-300 group-open:rotate-180 flex-shrink-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Ya, kami memberikan garansi bug fixing selama 3-6 bulan. Kami juga menyediakan layanan
+                        maintenance bulanan.
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
-                        <small class="form-text">Mohon gunakan email dengan domain @gmail.com</small>
+                </details>
+
+                <details
+                    class="group bg-brand-surface border border-white/5 rounded-2xl overflow-hidden animate-fade-in-up delay-200 [&_summary::-webkit-details-marker]:hidden">
+                    <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                        <h4 class="font-bold text-white group-hover:text-brand-cyan transition-colors pr-8">Bagaimana
+                            sistem pembayarannya?</h4>
+                        <div
+                            class="text-gray-400 transition-transform duration-300 group-open:rotate-180 flex-shrink-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M6 9l6 6 6-6" />
+                            </svg>
+                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Pembayaran dilakukan bertahap: DP 50% di awal, sisanya 50% setelah proyek selesai.
                     </div>
-                    <div class="form-group">
-                        <label for="message">Pesan</label>
-                        <textarea id="message" name="message" rows="4" required
-                            placeholder="Ceritakan kebutuhan Anda..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Kirim Pesan</button>
-                </form>
+                </details>
             </div>
+        </div>
+    </section>
 
-            <div class="footer-bottom">
-                <div class="footer-info">
-                    <div class="logo">
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 lg:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-slate-900 to-brand-dark z-0"></div>
+        <div
+            class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-cyan/50 to-transparent">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div
+                class="max-w-4xl mx-auto bg-slate-800/50 backdrop-blur-xl border border-white/10 rounded-3xl p-10 lg:p-20 relative overflow-hidden animate-fade-in-up">
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-cyan/10 blur-[120px] rounded-full pointer-events-none -z-10">
+                </div>
+
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Siap Transformasi Digital?</h2>
+                <p class="text-gray-300 text-lg lg:text-xl mb-10 max-w-2xl mx-auto">
+                    Jangan biarkan bisnis Anda tertinggal. Diskusikan kebutuhan teknologi Anda bersama tim ahli kami
+                    sekarang juga.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20ingin%20konsultasi%20tentang%20proyek%20IT"
+                        target="_blank"
+                        class="inline-flex justify-center items-center px-8 py-4 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-bold text-lg shadow-lg shadow-brand-cyan/30 hover:shadow-brand-cyan/50 hover:scale-[1.02] transition-all duration-300">
+                        Chat via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-white/10 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2 space-y-6">
+                    <a href="#" class="flex items-center gap-2 text-2xl font-bold text-white">
                         <img src="https://res.cloudinary.com/teguh02/image/upload/v1768364843/LOGO_KOTAK_xbylsl.png"
-                            alt="Rijanara Logo" class="logo-img">
-                        Rijanara<span class="dot">.</span>
-                    </div>
-                    <p>Jl. Teknologi No. 123, Jakarta Selatan</p>
-                    <p>Email: hello@rijanara.com</p>
-                    <p>CS: rijanarainovasiteknologi@gmail.com</p>
+                            alt="Logo" class="h-8 w-auto">
+                        <span>Rijanara<span class="text-brand-cyan">.</span></span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        Partner transformasi digital terpercaya untuk bisnis Anda.
+                    </p>
                 </div>
-                <div class="social-links">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                            <rect x="2" y="9" width="4" height="12" />
-                            <circle cx="4" cy="4" r="2" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="Instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg>
-                    </a>
+
+                <div class="space-y-4">
+                    <h5 class="text-white font-bold text-lg">Layanan</h5>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Web Development</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Mobile Apps</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h5 class="text-white font-bold text-lg">Perusahaan</h5>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Kontak</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
-            &copy; 2026 PT Rijanara Inovasi Teknologi. All rights reserved.
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2026 PT Rijanara Inovasi Teknologi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <!-- Toast Notification -->
-    <div id="toast" class="toast">Pesan berhasil dikirim! Kami akan segera menghubungi Anda.</div>
+    <div id="toast"
+        class="fixed bottom-6 right-6 z-50 transform transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+        <div
+            class="bg-brand-surface border border-brand-cyan/30 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4">
+            <div class="w-8 h-8 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <div>
+                <h6 class="font-bold text-sm">Pesan Terkirim!</h6>
+                <p class="text-xs text-gray-400">Kami akan menghubungi Anda segera.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>

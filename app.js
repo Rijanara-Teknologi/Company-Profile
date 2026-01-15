@@ -1,181 +1,147 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Reveal on Scroll (Intersection Observer)
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
+    // 1. Reveal on Scroll (Intersection Observer)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in-up').forEach(el => {
+    // Initialize animations
+    document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
     });
 
-    // Navbar Scrolled State
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-
-    // Mobile Menu Toggle
+    // 2. Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileMenu = document.querySelector('.mobile-menu-items');
 
-    if (mobileBtn) {
+    if (mobileBtn && mobileMenu) {
         mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
         });
     }
 
-    // Close mobile menu when a link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-        });
-    });
-
-    // Active Link Highlighting
-    const sections = document.querySelectorAll('section, header, footer');
-    const navItems = document.querySelectorAll('.nav-link');
+    // 3. Navbar Scroll & Active Link
+    const navbar = document.querySelector('.navbar');
+    const sections = document.querySelectorAll('section, header#home');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
     window.addEventListener('scroll', () => {
+        // Navbar Shadow
+        if (window.scrollY > 20) {
+            navbar.classList.add('shadow-2xl', 'bg-slate-900/95');
+            navbar.classList.remove('bg-slate-900/80');
+        } else {
+            navbar.classList.remove('shadow-2xl', 'bg-slate-900/95');
+            navbar.classList.add('bg-slate-900/80');
+        }
+
+        // Active State
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 200)) {
+            if (window.scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
         });
 
-        navItems.forEach(li => {
-            li.classList.remove('active');
-            if (li.getAttribute('href').includes(current)) {
-                li.classList.add('active');
+        navLinks.forEach(link => {
+            link.classList.remove('text-white', 'after:w-full');
+            link.classList.add('text-gray-400');
+
+            // Check if href matches current section
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.remove('text-gray-400');
+                link.classList.add('text-white', 'after:w-full');
             }
         });
     });
 
-    // FAQ Accordion
-    const accordions = document.querySelectorAll('.accordion-header');
-
-    accordions.forEach(acc => {
-        acc.addEventListener('click', function () {
-            // Toggle current
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !expanded);
-
-            const content = this.nextElementSibling;
-
-            if (!expanded) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                content.style.maxHeight = null;
-            }
-
-            // Optional: Close others
-            accordions.forEach(other => {
-                if (other !== this && other.getAttribute('aria-expanded') === 'true') {
-                    other.setAttribute('aria-expanded', 'false');
-                    other.nextElementSibling.style.maxHeight = null;
-                }
-            });
-        });
-    });
-
-    // Toast Helper
-    function showToast(message, type = 'success') {
+    // 4. Toast Notification Logic
+    function showToast(title, message) {
         const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.className = 'toast show'; // Reset classes
+        if (!toast) return;
 
-        if (type === 'error') {
-            toast.classList.add('error');
-        }
+        const titleEl = toast.querySelector('h6');
+        const msgEl = toast.querySelector('p');
 
+        if (titleEl) titleEl.textContent = title;
+        if (msgEl) msgEl.textContent = message;
+
+        // Show
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+
+        // Hide after 3s
         setTimeout(() => {
-            toast.classList.remove('show');
+            toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
         }, 3000);
     }
 
-    // Contact Form & Toast
+    // 5. Contact Form Handler
     const contactForm = document.getElementById('contactForm');
-
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Simple validation check (already handled by 'required' attribute, but just in case)
-            const name = document.getElementById('name').value;
+            // Simple validation
             const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
-            if (name && email && message) {
-                const emailValue = email.trim().toLowerCase();
-                const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
-
-                // Validate email domain using Regex
-                if (!gmailRegex.test(emailValue)) {
-                    // Show error UI
-                    const emailInput = document.getElementById('email');
-                    emailInput.classList.add('error');
-                    emailInput.focus();
-
-                    // Show error toast
-                    showToast('Mohon gunakan email Gmail (@gmail.com) yang valid', 'error');
-                    return;
-                }
-
-                // Remove error class if valid
-                document.getElementById('email').classList.remove('error');
-
-                // Prepare FormData for Netlify submission
-                const formData = new FormData(contactForm);
-
-                // Send to Netlify via Fetch
-                fetch("/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                })
-                    .then(() => {
-                        // Show success toast
-                        showToast('Pesan berhasil dikirim! Kami akan segera menghubungi Anda.', 'success');
-                        // Reset form
-                        contactForm.reset();
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        showToast('Gagal mengirim pesan. Silakan coba lagi.', 'error');
-                    });
+            if (!gmailRegex.test(email)) {
+                showToast('Error', 'Mohon gunakan email @gmail.com yang valid');
+                document.getElementById('email').focus();
+                return;
             }
+
+            // Simulate form submission
+            const btn = contactForm.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+
+            btn.textContent = 'Mengirim...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                showToast('Pesan Terkirim!', 'Kami akan segera menghubungi Anda.');
+                contactForm.reset();
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1000);
         });
     }
 
-    // Smooth Scroll for anchor links (safeguard for older browsers)
+    // 6. Smooth Scroll Offset (for anchors)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId && targetId !== '#') {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Offset for sticky navbar
-                        behavior: 'smooth'
-                    });
-                }
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerOffset = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
             }
         });
     });
