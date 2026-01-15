@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: 'media', // Auto-follow system preference (prefers-color-scheme)
     content: [
         "./*.{html,js}",
         "./assets/**/*.{html,js}"
