@@ -93,19 +93,38 @@
 /*
  * SVG Animation Classes
  * Applied to hero SVG elements
+ * Note: For SVG elements, use 50% 50% which calculates from the element's bounding box center
  */
 .spin-slow {
-    transform-origin: center;
+    transform-origin: 50% 50%;
     animation: spin 20s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .spin-slow {
+        animation: none;
+    }
+}
+
 .pulse {
-    transform-origin: center;
+    transform-origin: 50% 50%;
     animation: pulse-svg 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pulse {
+        animation: none;
+    }
 }
 
 .float {
     animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .float {
+        animation: none;
+    }
 }
 
 /*
