@@ -20,7 +20,8 @@
     }
 
     body {
-        @apply font-inter text-text-main bg-brand-dark overflow-x-hidden;
+        /* Don't lock colors in base layer - let HTML classes control light/dark theme */
+        @apply font-inter antialiased overflow-x-hidden;
     }
 }
 
