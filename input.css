@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+ * Custom Base Styles
+ * Smooth scroll is handled here, with JS checking for prefers-reduced-motion
+ */
 @layer base {
     html {
         scroll-behavior: smooth;
@@ -9,14 +13,27 @@
         -moz-osx-font-smoothing: grayscale;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+    }
+
     body {
-        @apply font-inter text-gray-800 bg-gray-50 overflow-x-hidden;
+        @apply font-inter text-text-main bg-brand-dark overflow-x-hidden;
     }
 }
 
+/* 
+ * Custom Utility Classes
+ * Minimal custom utilities for gradient text and 3D transforms
+ */
 @layer utilities {
     .text-gradient {
-        @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan to-brand-blue;
+        background: linear-gradient(to right, #00D4FF, #0055FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .preserve-3d {
@@ -30,17 +47,96 @@
     .perspective-1000 {
         perspective: 1000px;
     }
+}
 
-    /* Custom Scrollbar */
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 8px;
+/*
+ * Custom Keyframe Animations
+ * Required for SVG animations and parallax effects not covered by Tailwind defaults
+ */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-svg {
+    0%, 100% { 
+        transform: scale(1); 
+        opacity: 0.5; 
     }
-
-    .custom-scrollbar::-webkit-scrollbar-track {
-        @apply bg-gray-100;
+    50% { 
+        transform: scale(1.05); 
+        opacity: 0.8; 
     }
+}
 
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        @apply bg-brand-blue/50 rounded-full hover:bg-brand-blue;
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+    20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * SVG Animation Classes
+ * Applied to hero SVG elements
+ */
+.spin-slow {
+    transform-origin: center;
+    animation: spin 20s linear infinite;
+}
+
+.pulse {
+    transform-origin: center;
+    animation: pulse-svg 3s ease-in-out infinite;
+}
+
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/*
+ * Parallax Layer Classes
+ * Applied via JS, speeds defined as data attributes
+ */
+[data-parallax-layer] {
+    will-change: transform;
+}
+
+/* 
+ * 3D Tilt Effect Classes
+ * Only active on desktop (pointer: fine), disabled on touch and reduced-motion
+ */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    [data-tilt] {
+        transform-style: preserve-3d;
+        transition: transform 0.1s ease-out;
+    }
+    
+    [data-tilt-glare] {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    [data-tilt]:hover [data-tilt-glare] {
+        opacity: 1;
     }
 }
