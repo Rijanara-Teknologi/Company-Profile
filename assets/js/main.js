@@ -71,32 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
     
-    // FAQ Accordion
-    const accordionButtons = document.querySelectorAll('[data-accordion-btn]');
-    
-    accordionButtons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !expanded);
-            
-            const content = this.nextElementSibling;
-            
-            if (!expanded) {
-                content.style.maxHeight = content.scrollHeight + 'px';
-            } else {
-                content.style.maxHeight = null;
-            }
-            
-            // Optional: Close others
-            accordionButtons.forEach(other => {
-                if (other !== this && other.getAttribute('aria-expanded') === 'true') {
-                    other.setAttribute('aria-expanded', 'false');
-                    other.nextElementSibling.style.maxHeight = null;
-                }
-            });
-        });
-    });
-    
     // Contact Form Handler
     const contactForm = document.getElementById('contactForm');
     
