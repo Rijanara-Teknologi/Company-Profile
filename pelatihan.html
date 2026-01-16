@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Pelatihan Online - Rijanara Inovasi Teknologi</title>
+    <meta name="description"
+        content="Tingkatkan keahlian digital Anda dengan pelatihan terbaik dari Rijanara: Digital Marketing, Cybersecurity, dan Python.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rijanara.web.id/pelatihan.html">
+    <meta property="og:title" content="Katalog Pelatihan Online - Rijanara">
+    <meta property="og:description" content="Tingkatkan keahlian digital Anda dengan pelatihan terbaik dari Rijanara.">
+    <meta property="og:image"
+        content="https://res.cloudinary.com/teguh02/image/upload/v1768364843/LOGO_KOTAK_xbylsl.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BKYW7GJ3WE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BKYW7GJ3WE');
+    </script>
+
+    <!-- Tailwind CSS (CDN for Development) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#030712',
+                            surface: '#111827',
+                            blue: '#0055FF',
+                            cyan: '#00D4FF',
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .text-gradient {
+            background: linear-gradient(to right, #00D4FF, #0055FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body
+    class="font-inter bg-brand-dark text-white overflow-x-hidden antialiased selection:bg-brand-cyan/30 selection:text-brand-cyan">
+
+    <!-- Navbar -->
+    <nav
+        class="navbar fixed top-0 left-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="container mx-auto px-6 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="relative w-8 h-8 overflow-hidden rounded-lg">
+                    <img src="https://res.cloudinary.com/teguh02/image/upload/v1768364843/LOGO_KOTAK_xbylsl.png"
+                        alt="Rijanara Logo"
+                        class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300">
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white">Rijanara<span
+                        class="text-brand-cyan">.</span></span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center gap-8 nav-links">
+                <a href="index.html#home"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Beranda</a>
+                <a href="index.html#services"
+                    class="text-sm font-medium text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-brand-cyan">Layanan</a>
+                <a href="index.html#products"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Produk
+                    Digital</a>
+                <a href="index.html#about"
+                    class="text-sm font-medium text-gray-400 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-brand-cyan after:transition-all hover:after:w-full">Tentang</a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="index.html#contact"
+                class="hidden lg:inline-flex px-6 py-2.5 rounded-full bg-brand-blue hover:bg-brand-blue/90 text-white text-sm font-semibold transition-all shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/40">
+                Konsultasi
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden text-white mobile-menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div
+            class="mobile-menu-items hidden lg:hidden bg-slate-900/95 backdrop-blur-xl border-t border-white/10 absolute top-full left-0 w-full p-6 flex flex-col gap-4 shadow-2xl">
+            <a href="index.html#home" class="text-gray-300 hover:text-brand-cyan py-2">Beranda</a>
+            <a href="index.html#services" class="text-brand-cyan py-2">Layanan</a>
+            <a href="index.html#products" class="text-gray-300 hover:text-brand-cyan py-2">Produk Digital</a>
+            <a href="index.html#about" class="text-gray-300 hover:text-brand-cyan py-2">Tentang</a>
+            <a href="index.html#contact"
+                class="px-6 py-3 rounded-xl bg-brand-blue text-center text-white font-semibold">Konsultasi Gratis</a>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <section class="pt-40 pb-20 relative overflow-hidden">
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-blue/20 blur-[120px] rounded-full -z-10 pointer-events-none">
+        </div>
+        <div class="container mx-auto px-6 text-center">
+            <div
+                class="inline-block px-4 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-sm font-semibold mb-6 animate-fade-in-up">
+                Rijanara Academy
+            </div>
+            <h1 class="text-4xl lg:text-6xl font-bold mb-6 animate-fade-in-up md:delay-100">
+                Katalog <span class="text-gradient">Pelatihan Online</span>
+            </h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10 animate-fade-in-up md:delay-200">
+                Tingkatkan skill digital Anda bersama mentor berpengalaman. Pilih kelas yang sesuai dengan minat dan
+                kebutuhan karir Anda.
+            </p>
+        </div>
+    </section>
+
+    <!-- Course List -->
+    <section class="pb-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Course 1: Digital Marketing -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 relative z-10">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">
+                        Digital Marketing</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">
+                        Pelajari strategi pemasaran digital, SEO, Social Media Ads, dan Content Marketing untuk
+                        meningkatkan omset bisnis.
+                    </p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            SEO & SEM Fundamental</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Facebook & Meta Ads</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Copywriting</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Analytics & Reporting</li>
+                    </ul>
+                    <div class="pt-6 border-t border-white/5 relative z-10">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20ingin%20mendaftar%20kelas%20Digital%20Marketing"
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-bold text-sm shadow-lg hover:shadow-brand-cyan/30 transition-all">
+                            Daftar Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course 2: Cybersecurity -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-100">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 relative z-10">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">
+                        Cybersecurity</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">
+                        Pahami dasar-dasar keamanan siber, ethical hacking, dan cara melindungi sistem dari serangan
+                        cyber.
+                    </p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Network Security</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Ethical Hacking Basic</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Web Vulnerability Scanning</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            SOC Analyst Intro</li>
+                    </ul>
+                    <div class="pt-6 border-t border-white/5 relative z-10">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20ingin%20mendaftar%20kelas%20Cybersecurity"
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-bold text-sm shadow-lg hover:shadow-brand-cyan/30 transition-all">
+                            Daftar Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course 3: Python -->
+                <div
+                    class="group p-8 rounded-3xl bg-brand-surface border border-white/5 hover:border-brand-cyan/50 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden animate-fade-in-up delay-200">
+                    <div
+                        class="absolute inset-0 bg-brand-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6 relative z-10">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 relative z-10 group-hover:text-brand-cyan transition-colors">
+                        Python Programming</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed relative z-10">
+                        Mastering bahasa pemrograman Python dari dasar hingga tingkat lanjut untuk Data Science dan
+                        Automation.
+                    </p>
+                    <ul class="space-y-3 mb-8 relative z-10">
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Python Syntax & Logic</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Object Oriented Programming</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Data Analysis with Pandas</li>
+                        <li class="flex items-center gap-3 text-sm text-gray-400"><span class="text-brand-cyan">✓</span>
+                            Automation Scripts</li>
+                    </ul>
+                    <div class="pt-6 border-t border-white/5 relative z-10">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Rijanara,%20saya%20ingin%20mendaftar%20kelas%20Python"
+                            target="_blank"
+                            class="flex justify-center items-center w-full py-3 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-white font-bold text-sm shadow-lg hover:shadow-brand-cyan/30 transition-all">
+                            Daftar Sekarang
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-white/10 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-10">
+                <a href="index.html" class="inline-flex items-center gap-2 mb-6 text-2xl font-bold text-white">
+                    <img src="https://res.cloudinary.com/teguh02/image/upload/v1768364843/LOGO_KOTAK_xbylsl.png"
+                        alt="Logo" class="h-8 w-auto">
+                    <span>Rijanara<span class="text-brand-cyan">.</span></span>
+                </a>
+                <p class="text-gray-400 text-sm">© 2026 PT Rijanara Inovasi Teknologi. All rights reserved.</p>
+            </div>
+            <div class="flex justify-center gap-6">
+                <a href="index.html" class="text-gray-500 hover:text-white transition-colors text-sm">Kembali ke
+                    Beranda</a>
+                <a href="https://wa.me/6281234567890"
+                    class="text-gray-500 hover:text-white transition-colors text-sm">Hubungi Kami</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification (Reused existing concept) -->
+    <div id="toast"
+        class="fixed bottom-6 right-6 z-50 transform transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+        <div
+            class="bg-brand-surface border border-brand-cyan/30 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4">
+            <div class="w-8 h-8 rounded-full bg-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+            <div>
+                <h6 class="font-bold text-sm">Info</h6>
+                <p class="text-xs text-gray-400">Selamat datang di Katalog Pelatihan.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reuse existing App JS for Mobile Menu logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
